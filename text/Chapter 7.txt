@@ -1,0 +1,169 @@
+Chapter 7:
+
+1: 18
+
+2: Person[] people;
+
+3: boolean[] vacant;
+
+4: 
+I only found two places. 
+
+One in like 34 hourCounts[hour]++
+and one in number 47,  System.out.println(hour + ": " + hourCounts[hour]);
+
+5: 
+For the first one the brackets come after you declare a data type, si int[] counts; would be correct. for the next half the size shouldn't be defined boolean[] occupied;
+
+6:
+double[] readings = new double[60];
+String[] urls = new String[90];
+TicketMachine[] machines = new TicketMachines[5];
+
+7:
+
+none, is just sets a fixed size that is able to be stored in it, in this example 20.
+
+8: 
+
+They're using the wrong brackets, it should be [] not ()
+
+double[] prices = new double[50];
+
+9:
+it will give an exception : java.lang.ArrayIndexOutOfBoundsException:24
+10:
+Picture
+11:
+Line one should be: public void printGreater(double[]marks, double mean)
+Line three should be: for(index = 0; index < marks.length; index++)
+
+12:
+Picture
+13:
+public int numberOfAccesses()
+{
+int total = 0;
+for(int hour = 0; hour < hourCounts.length; hour++){
+total += hourCounts[hour];
+}
+return total;
+}
+16:
+Method quietestHour
+
+int quiestestHour(int[] hourCounts)
+{
+int quietest = hourCounts[0];
+for(int i =0; i<hourCounts.length; i++)
+{
+if(hourCounts[i] > quiestest)
+quietest = hourCounts[i];
+}
+return quiestest;
+17:
+It will return the last largest counts.
+}
+18:
+int busiestHour(int[] hourCounts)
+{
+int busiestOne = 0;
+int busiestTwo = 0;
+for(int n:hourCounts)
+{
+if(busiestOne < n){
+if(busiestOne{
+busiestTwo = busiestOne;
+busiestOne = n;
+}
+else if (busiestTwo<n){
+busiestTwo=n;
+}
+}
+return busiestOne;
+}
+
+21:
+read/Picture
+22:
+
+Flexible
+Against
+Takes more time for it to insertion 
+For
+There is built in methods that could make your job easier like remove, add.
+
+Fixed
+
+Against
+Can be lead to wastage of memory if less number of objects are inserted
+
+For
+Quicker as there is no reassigning of memory is needed
+
+Flexible would be my choice
+24:
+Picture
+25:
+no it almost makes a tree on top of a another tree.
+26:12:32 AM 4/18/202112:32 AM 4/18/202112:32 AM 4/18/2021
+The java.util.Arrays class has two versioins
+public static void fill(int[] myArray. int val)
+This method when used will assign all elements of the array, myArray with the value in the variable val.
+public static void fill(int[] myArray, int fromIndex, int toIndex, int val)
+This method is used to assign val value to the elements at fromIndex to the element till toIndex of the array, myArray.
+the reset method is used to set the value of the elements to 0.
+
+27:
+Yes, the pattern seems to mimic itself three times.
+
+28:
+Picture
+
+29:
+Yes it is different, it almost goes 12:32 AM 4/18/2021This is because the pattern is changed because the array state doesn't update after travering the whole array.
+
+30:
+
+Picture
+
+35:
+Picture
+
+36:
+Picture
+
+37:
+Picture
+38:
+Picture
+
+41:
+import java.lang.*;
+
+public class Main
+{
+public void test()
+{
+int source[]={0,1,2,3,4,5};
+
+int[] destination = new int[100];
+System.arraycopy(source,0, destination, 0, n);
+System.out.print("copied array");
+for(int i = 0; i<n;i++)
+
+System.out.print(destination[i]+" ");
+}
+}
+
+42:
+asList: This method will return a list of the specified array
+binartSearch: This method is used to search for a specified key in the specified array using the binary search algroithm. Keep in mind your array must be sorted before making this call.
+fill: This method is used to assign a specified int value val to each element of the specified array arr.
+sort: This method is used to sort elements of a array in a ascending order.
+
+43:
+
+44:
+
+int[] copy = new int[1000];

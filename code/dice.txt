@@ -1,0 +1,84 @@
+import java.util.*;
+
+public class DieRoller {
+    private final List<Integer> dieTypes = new ArrayList<Integer>(){{
+        add(4);
+        add(6);
+        add(8);
+        add(10);
+        add(12);
+        add(20);
+        add(100);
+    }};
+
+    public static void main(String[] args) {
+        new DieRoller();
+    }
+    
+    public DieRoller() {
+        Scanner inputScanner = new Scanner(System.in);
+        Random random = new Random();
+
+        System.out.println("Enter a die type (4, 6, 8, 10, 12, 20, 100): ");
+
+        int dieType;
+        int dieAmount;
+        int targetNumber;
+
+        try {
+            dieType = inputScanner.nextInt();
+
+            if (!dieTypes.contains(dieType)) {
+                System.out.println("Invalid die type!");
+                return;
+            }
+
+            System.out.println("Enter the number of dice: ");
+
+            dieAmount = inputScanner.nextInt();
+
+            System.out.println("Enter the target number: ");
+
+            targetNumber = inputScanner.nextInt();
+
+            if (targetNumber < 5 || targetNumber > 30) {
+                System.out.println("Target number out of range!");
+                return;
+            }
+        }catch(InputMismatchException exception) {
+            System.out.println("Input was not a valid integer!");
+            return;
+        }
+
+        List<Integer> results = new ArrayList<>();
+
+        for(int index = 0; index < dieAmount; index++) {
+            results.add(random.nextInt(dieType) + 1);
+        }
+
+        int oneCount = 0;
+
+        for(int index = 0; index < results.size(); index++) {
+            int result = results.get(index);
+
+            if(result == 1) {
+                oneCount++;
+            }
+
+            if(result == dieType) {
+                results.set(index, result + random.nextInt(dieType) + 1);
+            }
+        }
+
+        if(oneCount >= results.size() / 2) {
+            System.out.println("Bust. Roll failed.");
+            return;
+        }
+
+        if(results.contains(targetNumber)) {
+            System.out.println("Success. Rolled " + targetNumber + " on attempt " + (results.indexOf(targetNumber) + 1) + ".");
+        }else {
+            System.out.println("Failed. Rolled " + dieAmount + " times.");
+        }
+    }
+}
